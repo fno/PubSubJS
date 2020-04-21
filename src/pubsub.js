@@ -15,17 +15,18 @@
 
     factory(PubSub);
 
-    // AMD support
-    if (typeof define === 'function' && define.amd){
-        define(function() { return PubSub; });
-
-        // CommonJS and Node.js module support
-    } else if (typeof exports === 'object'){
+      // CommonJS and Node.js module support
+     if (typeof exports === 'object'){
         if (module !== undefined && module.exports) {
             exports = module.exports = PubSub; // Node.js specific `module.exports`
         }
         exports.PubSub = PubSub; // CommonJS module 1.1.1 spec
         module.exports = exports = PubSub; // CommonJS
+       
+       // AMD support
+    } else if (typeof define === 'function' && define.amd){      
+        define(function() { return PubSub; });
+        
     }
 
 }(( typeof window === 'object' && window ) || this, function (PubSub){
